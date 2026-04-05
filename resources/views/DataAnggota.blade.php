@@ -3,111 +3,148 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard Perpus</title>
+<title>Data Anggota</title>
 
 <style>
 * {
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 body {
-    display:flex;
-    background:#eef1f7;
+  display: flex;
+  background: #eef1f7;
 }
 
 /* SIDEBAR */
 .sidebar {
-    width:220px;
-    height:100vh;
-    background:#2f2a8c;
-    padding:20px;
-    color:white;
+  width: 220px;
+  height: 100vh;
+  background: linear-gradient(#2d2f92, #3f3fb3);
+  padding: 20px;
+  color: white;
 }
 
 .logo {
-    font-size:40px;
-    text-align:center;
-    margin-bottom:20px;
+  text-align: center;
+  font-size: 50px;
+  margin-bottom: 20px;
 }
 
-.menu button {
-    width:100%;
-    padding:10px;
-    margin:8px 0;
-    border:none;
-    border-radius:20px;
-    background:#cfe2ff;
-    cursor:pointer;
-    font-weight:bold;
+.menu {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 20px;
+  background: #a5c4ff;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.menu button:hover {
-    background:#a9c9ff;
+.menu:hover {
+  transform: translateX(5px);
+  background: #cfe0ff;
+}
+
+.menu.active {
+  background: white;
+  color: #2d2f92;
+  font-weight: bold;
 }
 
 /* MAIN */
 .main {
-    flex:1;
-    padding:20px;
+  flex: 1;
+  padding: 20px;
 }
 
 /* HEADER */
 .header {
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .header h2 {
-    font-size:24px;
+  font-size: 24px;
+}
+
+.icons {
+  font-size: 22px;
+}
+
+/* TOP BAR */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.search {
+  width: 60%;
+  padding: 12px 20px;
+  border-radius: 25px;
+  border: none;
+  background: #ddd;
+}
+
+.btn {
+  background: #3b82f6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
 }
 
 /* TABLE */
 .table-box {
-    background:white;
-    padding:15px;
-    border-radius:10px;
+  background: #dcdcdc;
+  padding: 20px;
+  border-radius: 10px;
 }
 
 table {
-    width:100%;
-    border-collapse:collapse;
+  width: 100%;
+  border-collapse: collapse;
+  background: #eee;
 }
 
 th, td {
-    border:1px solid #ccc;
-    padding:10px;
-    text-align:center;
+  border: 1px solid #999;
+  padding: 15px;
+  text-align: center;
 }
 
 th {
-    background:#eee;
+  background: #ccc;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile img {
+  width: 60px;
+  border-radius: 10px;
+  margin-bottom: 5px;
 }
 
 /* STATUS */
 .status {
-    padding:5px 10px;
-    border-radius:10px;
-    color:white;
-}
-
-.aktif { background:green; }
-.nonaktif { background:red; }
-
-/* BUTTON */
-.btn {
-    padding:5px 10px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.btn-bayar {
-    background:#1e88e5;
-    color:white;
+  background: #4ade80;
+  color: black;
+  padding: 5px 15px;
+  border-radius: 20px;
+  display: inline-block;
+  font-weight: bold;
 }
 </style>
 </head>
@@ -119,56 +156,60 @@ th {
 <!-- MAIN -->
 <div class="main">
 
-    <div class="header">
-        <h2>Data Anggota</h2>
-        <div>🔔 ✉️ 👤</div>
-    </div>
+  <!-- HEADER -->
+  <div class="header">
+    <h2>Data Anggota</h2>
+    <div class="icons">🔔 ✉️ 👤</div>
+  </div>
 
-</div>
+  <!-- SEARCH + BUTTON -->
+  <div class="top-bar">
+    <input type="text" class="search" placeholder="Search">
+    <button class="btn" onclick="window.location.href='/TambahAnggota'">
+        + Tambah Anggota
+    </button>
+  </div>
 
-    <div class="table-box">
-        <table>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Anggota</th>
-                    <th>Email</th>
-                    <th>Status</th>
-                    <th>Denda</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
+  <!-- TABLE -->
+  <div class="table-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Anggota</th>
+          <th>Email</th>
+          <th>Status</th>
+          <th>Bayar denda</th>
+        </tr>
+      </thead>
 
-            <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>Andi Saputra</td>
-                    <td>andi@gmail.com</td>
-                    <td><span class="status aktif">Aktif</span></td>
-                    <td>Rp 10.000</td>
-                    <td><button class="btn btn-bayar">Bayar</button></td>
-                </tr>
+      <tbody>
+        <tr>
+          <td>
+            <div class="profile">
+              <img src="https://i.pravatar.cc/60?img=1">
+              <span>Alzean</span>
+            </div>
+          </td>
+          <td>Alzean@gmail.com</td>
+          <td><span class="status">Aktif</span></td>
+          <td>Rp60.000</td>
+        </tr>
 
-                <tr>
-                    <td>2</td>
-                    <td>Siti Nurhaliza</td>
-                    <td>siti@gmail.com</td>
-                    <td><span class="status nonaktif">Terlambat</span></td>
-                    <td>Rp 25.000</td>
-                    <td><button class="btn btn-bayar">Bayar</button></td>
-                </tr>
+        <tr>
+          <td>
+            <div class="profile">
+              <img src="https://i.pravatar.cc/60?img=5">
+              <span>Gracyla</span>
+            </div>
+          </td>
+          <td>Dimsum@gmail.com</td>
+          <td><span class="status">Aktif</span></td>
+          <td>-</td>
+        </tr>
 
-                <tr>
-                    <td>3</td>
-                    <td>Budi Santoso</td>
-                    <td>budi@gmail.com</td>
-                    <td><span class="status aktif">Aktif</span></td>
-                    <td>Rp 0</td>
-                    <td>-</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+      </tbody>
+    </table>
+  </div>
 
 </div>
 

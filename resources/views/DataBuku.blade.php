@@ -146,7 +146,7 @@
 <!-- MAIN CONTENT -->
 <div class="main">
     <div class="header">
-        <h2>Data Buku</h2>
+        <h2>Daftar Buku</h2>
         <div class="icons">
             <span>🔔</span>
             <span>✉️</span>

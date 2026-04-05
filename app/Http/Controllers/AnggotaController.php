@@ -12,7 +12,7 @@ class AnggotaController extends Controller
      */
     public function index()
     {
-        //
+        return view('DataAnggota');
     }
 
     /**
@@ -20,7 +20,7 @@ class AnggotaController extends Controller
      */
     public function create()
     {
-        //
+        return view('TambahAnggota');
     }
 
     /**

@@ -196,17 +196,40 @@ menus.forEach(menu => {
 /* LOAD HALAMAN */
 function loadPage(page) {
   if (page === "anggota") {
-    fetch("/DataAnggota")   // <-- route Laravel untuk data anggota
+    fetch("/anggota")
       .then(res => res.text())
       .then(data => {
         content.innerHTML = data;
       });
+
   } else if (page === "buku") {
     fetch("/DataBuku")
       .then(res => res.text())
       .then(data => {
         content.innerHTML = data;
       });
+
+  } else if (page === "peminjaman") {
+    fetch("/Peminjaman")
+      .then(res => res.text())
+      .then(data => {
+        content.innerHTML = data;
+      });
+
+  } else if (page === "pengembalian") {
+    fetch("/pengembalian")
+      .then(res => res.text())
+      .then(data => {
+        content.innerHTML = data;
+      });
+
+  } else if (page === "denda") { // ✅ TAMBAHAN DI SINI
+    fetch("/Denda")
+      .then(res => res.text())
+      .then(data => {
+        content.innerHTML = data;
+      });
+
   } else {
     content.innerHTML = pages[page];
 

@@ -159,7 +159,7 @@
       <a href="#">Forgot password?</a>
     </div>
 
-    <button type="submit">Login</button>
+    <button type="submi">Login</button>
 
     <p class="signup">
       Belum punya akun? <a href="#">Daftar</a>
